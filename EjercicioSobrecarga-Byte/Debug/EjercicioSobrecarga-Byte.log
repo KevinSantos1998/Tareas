@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\Kevin Santos\Desktop\TareasProgramacionIII\Tareas\EjercicioSobrecarga-Byte\main.cpp(10,10): warning C4566: el carácter representado por el nombre de carácter universal '\u202C' no se puede representar en la página de códigos actual (1252)
+  EjercicioSobrecarga-Byte.vcxproj -> C:\Users\Kevin Santos\Desktop\TareasProgramacionIII\Tareas\Debug\EjercicioSobrecarga-Byte.exe
