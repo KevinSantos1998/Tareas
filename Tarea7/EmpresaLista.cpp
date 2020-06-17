@@ -109,18 +109,12 @@ void EmpresaLista::ActualizarSalario(double valor)
 		return;
 
 	NodoEmpleado* actual = primero;
-	
+
 	while (actual != nullptr)
 	{
-		double NS=0;
-		NS = (actual->getSalrio() * valor) + actual->getSalrio();
-		actual->setSalario(NS);
+		actual->setSalario((actual->getSalrio() * valor) + actual->getSalrio());
 		actual = actual->getSiguiente();
-
 	}
-
-	cout << "\n";
-
 }
 
 void EmpresaLista::imprimirEmpleados()
