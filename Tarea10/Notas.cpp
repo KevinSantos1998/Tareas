@@ -18,22 +18,22 @@ Nota::Nota()
 void Nota::agregarNota() {
 	nota.open("notas.dat", ios::in | ios::out | ios::app | ios::binary);
 
-	NotaRegistro nuevaMateria;
+	NotaRegistro Lectura;
 
 	cout << "Ingrese Numero de cuenta: ";
-	cin >> nuevaMateria.numeroCuenta;
+	cin >> Lectura.numeroCuenta;
 
 	cout << "Ingrese Codigo de Materia: ";
-	cin >> nuevaMateria.codigoMateria;
+	cin >> Lectura.codigoMateria;
 	cout << "Ingrese Nota: ";
-	cin >> nuevaMateria.nota;
+	cin >> Lectura.nota;
 
 	nota.seekp(0, ios::end);// coloca el cursor de ESCRITURA en un byte especifico
-	nota.write(reinterpret_cast<const char*>(&nuevaMateria), sizeof(nota));
+	nota.write(reinterpret_cast<const char*>(&Lectura), sizeof(nota));
 
 	nota.close();
 
-	cout << "Materia agregadA\n";
+	cout << "Nota agregadA\n";
 }
 
 void Nota::EnlistarNota(int _numeroCuenta) {
