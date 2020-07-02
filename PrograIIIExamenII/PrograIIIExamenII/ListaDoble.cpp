@@ -1,47 +1,65 @@
-#include "ListaDobleCircular.h"
+#include "ListaDoble.h"
+#include <iostream> 
 
-#include <iostream>
 
-using std::cout;
+using namespace std;
 
-ListaCircular::ListaCircular() : primero(nullptr), ultimo(nullptr)
-{}
+ListaDoble::ListaDoble() : primero(nullptr), ultimo(nullptr){}
 
-bool ListaCircular::estaVacia()
+bool ListaDoble::estaVacia()
 {
 	return primero == nullptr;
 }
 
-void ListaCircular::agregarElemento(int _valor)
+void ListaDoble::agregarElementoInicio(int _valor,char _nombre[20])
 {
+	deque <int> gquiz;
+	gquiz.push_front(_valor);
 
-	Nodo* nuevo = new Nodo(_valor, nullptr, nullptr);
+	Nodo* nuevo = new Nodo(_valor,_nombre, nullptr, nullptr);
 
 	if (estaVacia())
 	{
 		primero = nuevo;
 		ultimo = nuevo;
 
-		ultimo->setSiguiente(primero);
-		primero->setAnterior(ultimo);
 	}
 	else
 	{
-
-		ultimo->setSiguiente(nuevo);
-		nuevo->setAnterior(ultimo);
-
-		ultimo = nuevo;
-
-		ultimo->setSiguiente(primero);
-		primero->setAnterior(ultimo);
+		primero->setAnterior(nuevo);
+		nuevo->setSiguiente(primero);
+		primero = nuevo;
 	}
 
-	cout << "Elemento ingresado!\n";
+	cout << "Elemento ingresado al Inicio!\n";
 
 }
 
-void ListaCircular::imprimirLista()
+void ListaDoble::agregarElementoFinal(int _valor, char _nombre[20])
+{
+	deque <int> gquiz;
+	gquiz.push_back(_valor);
+
+	Nodo* nuevo = new Nodo(_valor, _nombre,nullptr, nullptr);
+
+	if (estaVacia())
+	{
+		primero = nuevo;
+		ultimo = nuevo;
+
+	}
+	else
+	{
+		ultimo->setSiguiente(nuevo);
+		nuevo->setAnterior(ultimo);
+		ultimo = nuevo;
+	}
+
+	cout << "Elemento ingresado al final!\n";
+
+}
+
+void ListaDoble::imprimirLista()
 {
 
 	if (estaVacia())
@@ -60,154 +78,49 @@ void ListaCircular::imprimirLista()
 
 }
 
-void ListaCircular::imprimirListaRev()
+
+void ListaDoble::PopFinal()
 {
+	deque <int> gquiz;
+	gquiz.pop_back();
+
 	if (estaVacia())
 		return;
 
 	Nodo* actual = ultimo;
-
-	do
-	{
-		cout << "[ " << actual->getValor() << " ] ";
-		actual = actual->getAnterior();
-
-	} while (actual != ultimo);
-
-	cout << "\n";
+	actual->getAnterior()->setSiguiente(nullptr);
+	actual->setAnterior(nullptr);
+	ultimo = actual;
+	delete actual;
 
 }
 
-void ListaCircular::eliminarElemento(int _valor)
+void ListaDoble::PopInicio()
 {
+	deque <int> gquiz;
+	gquiz.pop_front();
 
 	if (estaVacia())
 		return;
 
 	Nodo* actual = primero;
-
-	do
-	{
-
-		if (actual->getValor() == _valor)
-		{
-
-			if (actual == primero)
-			{
-				primero = actual->getSiguiente();
-				primero->setAnterior(ultimo);
-				ultimo->setSiguiente(primero);
-
-				delete actual;
-			}
-			else if (actual == ultimo)
-			{
-				ultimo = actual->getAnterior();
-				ultimo->setSiguiente(primero);
-				primero->setAnterior(ultimo);
-
-				delete actual;
-
-			}
-			else
-			{
-				actual->getAnterior()->setSiguiente(actual->getSiguiente());
-				actual->getSiguiente()->setAnterior(actual->getAnterior());
-
-				delete actual;
-			}
-
-			cout << "Nodo Eliminado!\n";
-			return;
-
-		}
-		else
-			actual = actual->getSiguiente();
-
-	} while (actual != primero);
+	actual->getSiguiente()->setAnterior(nullptr);
+	actual->setSiguiente(nullptr);
+	primero = actual;
+	delete actual;
 
 }
 
-void ListaCircular::insertarElemento(int _pos, int _valor)
+void ObtenerInicio()
 {
-
-	if (estaVacia())
-	{
-		agregarElemento(_valor);
-		return;
-	}
-	else
-	{
-		int cantidad = tamanioLista();
-
-		if (_pos > cantidad)
-		{
-			cout << "Posicion de insersion no existe!";
-			return;
-		}
-
-		Nodo* actual = primero;
-		int posActual = 1;
-		Nodo* nuevo = new Nodo(_valor, nullptr, nullptr);
-
-		do
-		{
-			if (posActual == _pos)
-			{
-
-				if (actual == primero)
-				{
-					nuevo->setSiguiente(primero);
-					primero->setAnterior(nuevo);
-
-					primero = nuevo;
-
-					primero->setAnterior(ultimo);
-					ultimo->setSiguiente(primero);
-				}
-				else
-				{
-					actual->getAnterior()->setSiguiente(nuevo);
-					nuevo->setAnterior(actual->getAnterior());
-
-					nuevo->setSiguiente(actual);
-					actual->setAnterior(nuevo);
-				}
-
-				cout << "Nodo insertado!\n";
-				return;
-
-			}
-			else
-			{
-				actual = actual->getSiguiente();
-				posActual++;
-			}
-
-
-		} while (actual != primero);
-
-
-	}
-
+	deque <int> gquiz;
+	cout << "\nElemento del inicio : " << gquiz.front();
+	
 }
 
-int ListaCircular::tamanioLista()
+void ObtenerFinal()
 {
-	if (estaVacia())
-		return 0;
-
-	Nodo* actual = primero;
-
-	int cantidad = 0;
-
-	do
-	{
-		cantidad++;
-		actual = actual->getSiguiente();
-
-	} while (actual != primero);
-
-	return cantidad;
-
+	deque <int> gquiz;
+	cout << "\nElemento del final : " << gquiz.back();
 }
+
