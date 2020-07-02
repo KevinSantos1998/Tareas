@@ -152,3 +152,28 @@ void ArbolBinario::CargarElementos()
 			break;
 	}
 }
+
+void ArbolBinario::verificarArbol()
+{
+	verificarArbolAux(raiz,0);
+}
+
+void ArbolBinario::verificarArbolAux(NodoArbol* _raiz,int cont)
+{
+	if (_raiz->getHijoIzquierdo != nullptr)
+	{
+		cout << "no es un arbol lista";
+		return;
+	}
+	else if(cont<ObtenerPeso()&& _raiz->getHijoIzquierdo != nullptr)
+	{
+		cout << "es un arbol lista";
+		return;
+	}
+	else
+	{
+		verificarArbolAux(_raiz->getHijoDerecho(), cont + 1);
+	}
+
+}
+
