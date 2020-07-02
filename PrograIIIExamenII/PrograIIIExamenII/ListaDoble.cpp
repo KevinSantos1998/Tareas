@@ -11,7 +11,12 @@ bool ListaDoble::estaVacia()
 	return primero == nullptr;
 }
 
-void ListaDoble::agregarElementoInicio(int _valor,char _nombre[20])
+bool ListaDoble::estaLlena()
+{
+	return primero != nullptr;
+}
+
+void ListaDoble::agregarElementoInicio(int _valor, char _nombre[])
 {
 	deque <int> gquiz;
 	gquiz.push_front(_valor);
@@ -35,7 +40,7 @@ void ListaDoble::agregarElementoInicio(int _valor,char _nombre[20])
 
 }
 
-void ListaDoble::agregarElementoFinal(int _valor, char _nombre[20])
+void ListaDoble::agregarElementoFinal(int _valor, char _nombre[])
 {
 	deque <int> gquiz;
 	gquiz.push_back(_valor);
@@ -69,10 +74,10 @@ void ListaDoble::imprimirLista()
 
 	do
 	{
-		cout << "[ " << actual->getValor() << " ] ";
+		cout << "[ Codigo: " << actual->getValor() << ", Nombre: " << actual->getNombre() <<" ] ";
 		actual = actual->getSiguiente();
 
-	} while (actual != primero);
+	} while (actual != nullptr);
 
 	cout << "\n";
 
@@ -111,16 +116,31 @@ void ListaDoble::PopInicio()
 
 }
 
-void ObtenerInicio()
+void ListaDoble::ObtenerInicio()
 {
 	deque <int> gquiz;
-	cout << "\nElemento del inicio : " << gquiz.front();
+	cout << "\nElemento del inicio : " <<"Codigo: " << primero->getValor() <<", Nombre: " <<primero->getNombre();
 	
 }
 
-void ObtenerFinal()
+void ListaDoble::ObtenerFinal()
 {
 	deque <int> gquiz;
-	cout << "\nElemento del final : " << gquiz.back();
+	cout << "\nElemento del inicio : " << "Codigo: " << ultimo->getValor() << ", Nombre: " << ultimo->getNombre();
+}
+
+void ListaDoble::Guardarlista()
+{
+	if (estaVacia())
+		return;
+
+	Nodo* actual = primero;
+
+	do
+	{
+		actual->GuardarArchivo(actual->getValor(), actual->getNombre());
+		actual = actual->getSiguiente();
+
+	} while (actual != nullptr);
 }
 
