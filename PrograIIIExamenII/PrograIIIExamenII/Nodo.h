@@ -1,21 +1,24 @@
 #pragma once
-
+#include <fstream>
 
 #ifndef NODO_H
 #define NODO_H
+using namespace std;
 
 struct NodoReguistro
 {
 	int Codigo;
 	char nombre[20];
-	Nodo* siguiente;
-	Nodo* anterior;
+	
 
 };
 
 class Nodo 
 {
 private:
+	Nodo* siguiente;
+	Nodo* anterior;
+	fstream hola;
 
 public:
 	Nodo(void);
@@ -31,6 +34,7 @@ public:
 	int getValor();
 	Nodo* getAnterior();
 	Nodo* getSiguiente();
+	void GuardarArchivo(int,char[20]);
 
 };
 
