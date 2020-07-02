@@ -16,19 +16,14 @@ public:
 
 	bool estaVacia();
 	bool estaLlena();
-	void agregarElementoInicio(int,char[20]);
-	void agregarElementoFinal (int, char[20]);
+	void agregarElementoInicio(int,char[]);
+	void agregarElementoFinal (int,char[]);
 	void ObtenerInicio();
 	void ObtenerFinal();
 	void PopFinal();
 	void PopInicio();
 	void imprimirLista();
-
-
-	void insertarElemento(int, int);
-
-	int tamanioLista();
-	void showdq(deque <int>);
+	void Guardarlista();
 
 };
 
