@@ -3,7 +3,7 @@
 
 #ifndef LISTA_DOBLE_H
 #define LISTA_DOBLE_H
-
+#include <deque> 
 #include "Nodo.h"
 
 class ListaDoble
@@ -15,16 +15,20 @@ public:
 	ListaDoble();
 
 	bool estaVacia();
-	void agregarElemento(int);
-
+	bool estaLlena();
+	void agregarElementoInicio(int,char[20]);
+	void agregarElementoFinal (int, char[20]);
+	void ObtenerInicio();
+	void ObtenerFinal();
+	void PopFinal();
+	void PopInicio();
 	void imprimirLista();
-	void imprimirListaRev();
 
-	void eliminarElemento(int);
 
 	void insertarElemento(int, int);
 
 	int tamanioLista();
+	void showdq(deque <int>);
 
 };
 
