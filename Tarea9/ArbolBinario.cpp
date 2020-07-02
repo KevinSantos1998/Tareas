@@ -160,12 +160,12 @@ void ArbolBinario::verificarArbol()
 
 void ArbolBinario::verificarArbolAux(NodoArbol* _raiz,int cont)
 {
-	if (_raiz->getHijoIzquierdo != nullptr)
+	if (_raiz->getHijoIzquierdo() != nullptr)
 	{
 		cout << "no es un arbol lista";
 		return;
 	}
-	else if(cont<ObtenerPeso()&& _raiz->getHijoIzquierdo != nullptr)
+	else if(cont<ObtenerPeso()&& _raiz->getHijoDerecho() == nullptr)
 	{
 		cout << "es un arbol lista";
 		return;
