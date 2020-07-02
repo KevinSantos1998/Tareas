@@ -1,11 +1,21 @@
 #include "Nodo.h"
 
 
-Nodo::Nodo() : valor(-1), anterior(nullptr), siguiente(nullptr)
-{}
-
-Nodo::Nodo(int _valor, Nodo* _anterior, Nodo* _siguiente)
+Nodo::Nodo()
 {
+	NodoReguistro nodo;
+	nodo.Codigo = -1;
+	for (int i = 0; i < 20; i++)
+	{
+		nodo.nombre[i] = ' ';
+	}
+	nodo.anterior = nullptr;
+	nodo.siguiente = nullptr;
+}
+
+Nodo::Nodo(int _valor,char _nombre[], Nodo* _anterior, Nodo* _siguiente)
+{
+	setNombre(_nombre);
 	setValor(_valor);
 	setAnterior(_anterior);
 	setSiguiente(_siguiente);
@@ -13,30 +23,52 @@ Nodo::Nodo(int _valor, Nodo* _anterior, Nodo* _siguiente)
 
 void Nodo::setValor(int _valor)
 {
-	this->valor = _valor;
+	NodoReguistro nodo;
+	nodo.Codigo = _valor;
 }
 
 void Nodo::setAnterior(Nodo* _anterior)
 {
-	this->anterior = _anterior;
+	NodoReguistro nodo;
+	nodo.anterior = _anterior;
 }
 
 void Nodo::setSiguiente(Nodo* _siguiente)
 {
-	this->siguiente = _siguiente;
+	NodoReguistro nodo;
+	nodo.siguiente = _siguiente;
+}
+
+void Nodo::setNombre(char _nombre[20])
+{
+	NodoReguistro nodo;
+	for (int i = 0; i < 20; i++)
+	{
+		nodo.nombre[i] = _nombre[i];
+	}
+	
+}
+
+char* Nodo::getNombre() 
+{
+	NodoReguistro nodo;
+	return nodo.nombre;
 }
 
 int Nodo::getValor()
 {
-	return valor;
+	NodoReguistro nodo;
+	return nodo.Codigo;
 }
 
 Nodo* Nodo::getAnterior()
 {
-	return anterior;
+	NodoReguistro nodo;
+	return nodo.anterior;
 }
 
 Nodo* Nodo::getSiguiente()
 {
-	return siguiente;
+	NodoReguistro nodo;
+	return nodo.siguiente;
 }
