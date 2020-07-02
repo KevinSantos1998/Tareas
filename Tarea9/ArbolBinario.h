@@ -26,6 +26,8 @@ public:
 	void GuardarElementos();
 	void GuardarElementosAux(NodoArbol*);
 	void CargarElementos();
+	void verificarArbol();
+	void verificarArbolAux(NodoArbol*,int);
 
 };
 
